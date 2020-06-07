@@ -1,11 +1,12 @@
 import React, { useState, useEffect, FormEvent } from 'react';
-import { FiChevronRight } from 'react-icons/fi';
+import { FiChevronRight, FiSun, FiMoon } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../../hooks/theme';
 import api from '../../services/api';
 
 import logoImg from '../../assets/logo.svg';
 
-import { Title, Form, Repositories, Error } from './styles';
+import { Header, Title, Form, Repositories, Error } from './styles';
 
 interface Repository {
   full_name: string;
@@ -30,6 +31,9 @@ const Dashboard: React.FC = () => {
 
     return [];
   });
+  const [icon, setIcon] = useState(<FiSun size={32} />);
+
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     localStorage.setItem(
@@ -37,6 +41,12 @@ const Dashboard: React.FC = () => {
       JSON.stringify(repositories),
     );
   }, [repositories]);
+
+  useEffect(() => {
+    setIcon(
+      theme.title === 'light' ? <FiMoon size={32} /> : <FiSun size={32} />,
+    );
+  }, [theme.title]);
 
   async function handleAddRepository(
     event: FormEvent<HTMLFormElement>,
@@ -63,7 +73,13 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <img src={logoImg} alt="Github Explorer" />
+      <Header>
+        <img src={logoImg} alt="Github Explorer" />
+        <button type="button" onClick={toggleTheme}>
+          {icon}
+        </button>
+      </Header>
+
       <Title>Explore repositórios no Github</Title>
 
       <Form hasError={!!inputError} onSubmit={handleAddRepository}>

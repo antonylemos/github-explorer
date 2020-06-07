@@ -5,9 +5,41 @@ interface FormProps {
   hasError: boolean;
 }
 
+export const Header = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: transparent;
+    color: ${props => props.theme.colors.icon};
+    border: none;
+    transition: color 0.2s;
+
+    &:hover {
+      ${props =>
+        props.theme.title === 'light'
+          ? css`
+              color: ${shade(0.2, '#7e8ce0')};
+            `
+          : css`
+              color: ${shade(0.2, '#F7AF5F')};
+            `};
+    }
+
+    svg {
+      margin-right: 4px;
+    }
+  }
+`;
+
 export const Title = styled.h1`
   font-size: 48px;
-  color: #3a3a3a;
+  color: ${props => props.theme.colors.title};
   max-width: 450px;
   line-height: 56px;
 
@@ -30,11 +62,23 @@ export const Form = styled.form<FormProps>`
     border: 2px solid #fff;
     border-right: 0;
 
-    ${(props) =>
-      props.hasError &&
-      css`
-        border-color: #c53030;
-      `}
+    ${props =>
+      props.hasError && props.theme.title === 'light'
+        ? css`
+            border-color: #c53030;
+          `
+        : css`
+            border-color: #fff;
+          `}
+
+    ${props =>
+      props.hasError && props.theme.title === 'dark'
+        ? css`
+            border-color: #ffa48e;
+          `
+        : css`
+            border-color: #fff;
+          `}
 
     &::placeholder {
       color: #a8a8b3;
@@ -44,7 +88,7 @@ export const Form = styled.form<FormProps>`
   button {
     width: 210px;
     height: 70px;
-    background: #04d361;
+    background: ${props => props.theme.colors.secondary};
     border-radius: 0px 5px 5px 0px;
     border: 0;
     color: #fff;
@@ -52,14 +96,21 @@ export const Form = styled.form<FormProps>`
     transition: background-color 0.2s;
 
     &:hover {
-      background: ${shade(0.2, '#04d361')};
+      ${props =>
+        props.theme.title === 'light'
+          ? css`
+              background: ${shade(0.2, '#04d361')};
+            `
+          : css`
+              background: ${shade(0.2, '#4acfac')};
+            `}
     }
   }
 `;
 
 export const Error = styled.span`
   display: block;
-  color: #c53030;
+  color: ${props => props.theme.colors.error};
   margin-top: 8px;
 `;
 
@@ -68,7 +119,7 @@ export const Repositories = styled.div`
   max-width: 700px;
 
   a {
-    background: #fff;
+    background: ${props => props.theme.colors.primary};
     border-radius: 5px;
     width: 100%;
     padding: 24px;
@@ -99,7 +150,7 @@ export const Repositories = styled.div`
 
       strong {
         font-size: 20px;
-        color: #3d3d4d;
+        color: ${props => props.theme.colors.text};
       }
 
       p {
