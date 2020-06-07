@@ -2,6 +2,10 @@
   <img src="./src/assets/logo.svg" />
 </h1>
 
+<h3 align="center">
+  🧑🏽‍💻 <a href="https://explorer-github-app.herokuapp.com/">Acessar demonstração</a>
+</h3>
+
 ## 🏷️ Sobre
 
 O **github_explorer** é uma aplicação que foi desenvolvida durante o **Bootcamp GoStack**. Com ele é possível adicionar repositórios presentes no GitHub e verificar suas _issues_.
