@@ -1,16 +1,15 @@
 <h1 align="center">
-  <img src="./src/assets/logo.svg" />
+  <img src="./src/assets/logo.svg" height=100 />
 </h1>
 
-<h3 align="center">
+<h4 align="center">
   🧑🏽‍💻 <a href="https://explorer-github-app.herokuapp.com/">Acessar demonstração</a>
-</h3>
+</h4>
 
 ## 🏷️ Sobre
 
 O **github_explorer** é uma aplicação que foi desenvolvida durante o **Bootcamp GoStack**. Com ele é possível adicionar repositórios presentes no GitHub e verificar suas _issues_.
 
----
 
 ## 🚀 Tecnologias utilizadas
 
@@ -20,7 +19,6 @@ As seguintes tecnologias foram utilizadas no desenvolvimento dessa aplicação:
 - [axios](https://github.com/axios/axios)
 - [styled-components](https://styled-components.com/)
 
----
 
 ## 📦 Como baixar e executar?
 
